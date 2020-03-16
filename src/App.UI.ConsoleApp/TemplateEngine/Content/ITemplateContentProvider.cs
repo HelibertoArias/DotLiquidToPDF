@@ -1,4 +1,4 @@
-﻿namespace App.UI.ConsoleApp
+﻿namespace App.TemplateEngine.Content
 {
     public interface ITemplateContentProvider
     {

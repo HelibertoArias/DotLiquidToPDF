@@ -1,4 +1,7 @@
-﻿using DotLiquid;
+﻿using App.TemplateEngine;
+using App.TemplateEngine.Content;
+using App.TemplateEngine.Storage;
+using App.UI.ConsoleApp.TemplateEngine.Data;
 using System;
 
 namespace App.UI.ConsoleApp
@@ -7,19 +10,40 @@ namespace App.UI.ConsoleApp
     {
         private static void Main(string[] args)
         {
-            //Template template = Template.Parse("hi {{name}}");  // Parses and compiles the template
 
-            ITemplateContentProvider templateProvider = new StreamTemplateContentProvider();
+            try
+            {
 
-            var templateContent = templateProvider.GetTemplateContent("OnePiece", "Templates");
+                var json = @"{ ""device"" : ""Ultra device"", 
+                        ""speed"": ""Turbo"",  
+                        ""names"":[
+                                    {
+                                        ""name"": ""John"",
+                                        ""phones"" : [ 300123321, 40090909],
+                                        ""courses"": [ {""name"": ""Math"", ""Start"": 2020 }, 
+                                                        {""name"": ""Science computer"", ""Start"": 2021 } ]
+                                    },
+                                    {""name"": ""Doe""  }]  }";
 
-            var template = Template.Parse(templateContent);
 
-            string result = template.Render(Hash.FromAnonymousObject(new { name = "tobi" })); // Renders the output => "hi tobi"
 
-            Print(result);
+                ITemplateService templateService = new DotLiquidTemplateService(
+                                                            new TextTemplateContentProvider(),
+                                                            new FileTemplateStorageProvider(),
+                                                            new JsonTemplateDataProvider(json)
+                                                        );
 
-            Console.ReadLine();
+                templateService.Setup("OnePiece-custom", "Templates")
+                               .Render()
+                               .Save("OnePieceRender", "Render");
+
+            }
+            catch (Exception error)
+            {
+
+                Print(error.Message);
+            }
+           // Console.ReadLine();
         }
 
         private static void Print(string message) => System.Diagnostics.Debug.WriteLine(message);

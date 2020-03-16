@@ -1,18 +1,11 @@
 ﻿using System;
 using System.IO;
 
-namespace App.UI.ConsoleApp
+namespace App.TemplateEngine.Content
 {
-    public class StreamTemplateContentProvider : ITemplateContentProvider
+    public class TextTemplateContentProvider : ITemplateContentProvider
     {
-        private string TemplateName;
-
-        private string TemplatePath;
-
-        public StreamTemplateContentProvider()
-        {
-        }
-
+ 
         public string GetTemplateContent(string templateName, string templatePath)
         {
             if (string.IsNullOrEmpty(templateName))
@@ -22,14 +15,14 @@ namespace App.UI.ConsoleApp
                 throw new ArgumentNullException("The templatePath can not be null.");
 
             if (!Directory.Exists(templatePath))
-                throw new DirectoryNotFoundException($"The directory {TemplatePath} is not valid.");
+                throw new DirectoryNotFoundException($"The directory {templatePath} is not valid.");
 
-            this.TemplateName = templateName;
-            this.TemplatePath = string.Concat(templatePath,
+            
+            var fullPath = string.Concat(templatePath,
                                                     Path.DirectorySeparatorChar,
-                                                    $"{TemplateName}.liquid");
+                                                    $"{templateName}.liquid");
 
-            using (var fileStream = File.OpenRead(TemplatePath))
+            using (var fileStream = File.OpenRead(fullPath))
             {
                 using (var memoryStream = new MemoryStream())
                 {

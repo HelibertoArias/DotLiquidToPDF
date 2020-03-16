@@ -1,0 +1,56 @@
+﻿
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>{{ title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style>
+      body {
+      font-family:Arial, Helvetica, sans-serif;
+      width:700px;
+      margin: 10px auto
+      }
+
+      p {
+      color: red;
+
+      }
+
+    </style>
+  </head>
+  <body>
+    <h1>{{device}}</h1>
+    <h2>{{speed}}</h2>
+
+    {% for client in names %}
+
+    <h4>{{client.name}}</h4>
+
+
+	 
+		<h5>Phones</h5>
+
+		<ul>
+		  {% for phone in client.phones %}
+		  <li>{{ phone }}</li>
+		  {% endfor %}
+		</ul>
+		
+
+		<h5>Courses</h5>
+
+		<ul>
+		  {% for course in client.courses %}
+		  <li>{{ course.name }} - {{ course.start }}</li>
+		  {% endfor %}
+		</ul
+ 
+
+	{% endfor %}
+
+  </body>
+</html>
+
+

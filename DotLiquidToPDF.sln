@@ -3,13 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.1062
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App.EngineTemplate", "src\App.EngineTemplate\App.EngineTemplate.csproj", "{FB567443-1F44-4383-9A03-A6C0E38794B8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.EngineTemplate", "src\App.EngineTemplate\App.EngineTemplate.csproj", "{FB567443-1F44-4383-9A03-A6C0E38794B8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App.PdfGenerator", "src\App.PdfGenerator\App.PdfGenerator.csproj", "{709DB93E-188B-4D6A-B6B8-91F4F7AE1409}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.PdfGenerator", "src\App.PdfGenerator\App.PdfGenerator.csproj", "{709DB93E-188B-4D6A-B6B8-91F4F7AE1409}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App.UI.ConsoleApp", "src\App.UI.ConsoleApp\App.UI.ConsoleApp.csproj", "{3282A5D9-23D5-4CA4-871A-2EA748575A5F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Tests", "src\App.Tests\App.Tests.csproj", "{4DD502FF-E86C-4627-8426-D2D051BDA3E2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.UI.ConsoleApp", "src\App.UI.ConsoleApp\App.UI.ConsoleApp.csproj", "{3282A5D9-23D5-4CA4-871A-2EA748575A5F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +27,6 @@ Global
 		{3282A5D9-23D5-4CA4-871A-2EA748575A5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3282A5D9-23D5-4CA4-871A-2EA748575A5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3282A5D9-23D5-4CA4-871A-2EA748575A5F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4DD502FF-E86C-4627-8426-D2D051BDA3E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4DD502FF-E86C-4627-8426-D2D051BDA3E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4DD502FF-E86C-4627-8426-D2D051BDA3E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4DD502FF-E86C-4627-8426-D2D051BDA3E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
