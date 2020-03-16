@@ -1,44 +1,27 @@
 ﻿using DotLiquid;
 using System;
-using System.IO;
+
 namespace App.UI.ConsoleApp
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-
-
             //Template template = Template.Parse("hi {{name}}");  // Parses and compiles the template
 
-            string templateName = "OnePiece";
-            string templatePath = string.Concat(@"Templates", 
-                                                    Path.DirectorySeparatorChar,
-                                                    $"{templateName}.liquid");
+            ITemplateContentProvider templateProvider = new StreamTemplateContentProvider();
 
-            //string result = template.Render(Hash.FromAnonymousObject(new { name = "tobi" })); // Renders the output => "hi tobi"
+            var templateContent = templateProvider.GetTemplateContent("OnePiece", "Templates");
 
-            using (var fileStream = File.OpenRead(templatePath))
-            {
-                using (var memoryStream = new MemoryStream())
-                {
+            var template = Template.Parse(templateContent);
 
-                    using (var streamReader = new StreamReader(fileStream))
-                    {
-                        var templateContent = streamReader.ReadToEnd();
-                    }
+            string result = template.Render(Hash.FromAnonymousObject(new { name = "tobi" })); // Renders the output => "hi tobi"
 
-                   // var template = Template.Parse()
-                }
-            }
+            Print(result);
 
-
-            //Print(result);
-
-            Console.WriteLine("Hello world");
             Console.ReadLine();
         }
 
-        static void Print(string message) => System.Diagnostics.Debug.WriteLine(message);
+        private static void Print(string message) => System.Diagnostics.Debug.WriteLine(message);
     }
 }
